@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "start": "nodemon index.js",
+        "test": "echo no test cases yet"
+    },
+    "dependencies":{
+        "express":"*",
+        "redis": "*"
+    },
+    "devDependencies": {
+        "nodemon": "*"
+    }
+}

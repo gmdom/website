@@ -1,0 +1,25 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+  node-app:
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/apps
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/apps
+    command: ["npm", "run", "test"]
